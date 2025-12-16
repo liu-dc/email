@@ -281,7 +281,7 @@ if len(errs) > 0 {
 // 故意创建无效配置
 invalidConfig := map[string]*email.ConfigMapper{
     "default": {
-        MT:             0,
+        TLS:             false,
         Host:           "",            // 空主机地址 - 会被验证发现
         Port:           99999,         // 无效端口 - 会被验证发现
         Username:       "",            // 空用户名 - 会被验证发现
@@ -302,7 +302,7 @@ emailClient := email.New(invalidConfig)
 // 生产环境推荐配置
 safeConfig := map[string]*email.ConfigMapper{
     "default": {
-        MT:             0,              // 始终使用TLS加密
+        TLS:             true,              // 始终使用TLS加密
         Host:           "smtp.secure.com",
         Port:           465,
         Username:       "secure@example.com",
